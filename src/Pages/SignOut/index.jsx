@@ -1,11 +1,11 @@
 import Layout from '../../Components/Layout'
 
-function SignIn() {
+function SignOut() {
   return (
     <Layout>
-      SignIn
+      Sign-out
     </Layout>
   )
 }
 
-export default SignIn
+export default SignOut
