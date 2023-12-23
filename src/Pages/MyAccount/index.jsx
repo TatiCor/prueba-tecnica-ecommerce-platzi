@@ -3,7 +3,7 @@ import Layout from '../../Components/Layout'
 function MyAccount() {
   return (
     <Layout>
-      MyAccount
+      <h1>My account</h1>
     </Layout>
   )
 }
