@@ -7,11 +7,9 @@ const Navbar = () => {
   const context = useContext(ShoppingCartContext)
   const activeStyle = 'underline underline-offset-4'
 
-  //Sign Out
-  const signOut = localStorage.getItem('sign-out')
-  const parsedSignOut = JSON.parse(signOut)
-  const isUserSignOut = context.signOut || parsedSignOut
 
+  const isUserSignOut = context.signOut
+  console.log("estado del contexto ",isUserSignOut)
   const handleSignOut = () => {
     const stringifiedSignOut = JSON.stringify(true)
     localStorage.setItem('sign-out', stringifiedSignOut)
