@@ -27,10 +27,10 @@ function SignOut() {
       context.setAccount(data)
       localStorage.setItem('account', JSON.stringify(data))
       handleLogIn()
-    } else {
-      console.log('Ya existe una cuenta con estos datos.')
-    }
+    } 
   }
+
+  console.log("cuenta del estado: ", account);
 
   const handleLogIn = () => {
     if (hasAnAccount) {
@@ -117,13 +117,13 @@ function SignOut() {
           name='password'
           className='p-1 mb-2 pl-1 text-md rounded-md'
         />
-        <Link to="/">
+        
           <button
             onClick={createAnAccount}
             className='bg-black text-white w-full  my-4 p-2 rounded-md font-bold'>
             Create account
           </button>
-        </Link>
+        
       </form>
     )
   }

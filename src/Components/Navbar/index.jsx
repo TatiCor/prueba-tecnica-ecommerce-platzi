@@ -1,15 +1,20 @@
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import { ShoppingBagIcon } from '@heroicons/react/24/solid'
+import  ShoppingCart  from '../ShoppingCart'
 import { ShoppingCartContext } from '../../Context'
 
 const Navbar = () => {
   const context = useContext(ShoppingCartContext)
   const activeStyle = 'underline underline-offset-4'
 
+  const account = localStorage.getItem('account')
+  const parsedAccount = JSON.parse(account)
+
+  const hasAnAccount = !!parsedAccount && Object.keys(parsedAccount).length > 0
 
   const isUserSignOut = context.signOut
   console.log("estado del contexto ",isUserSignOut)
+  
   const handleSignOut = () => {
     const stringifiedSignOut = JSON.stringify(true)
     localStorage.setItem('sign-out', stringifiedSignOut)
@@ -30,11 +35,12 @@ const Navbar = () => {
           </NavLink>
         </li>
       )
-    } else {
+    } 
+    if(hasAnAccount && !isUserSignOut){
       return(
         <>
         <li className='text-black/60'>
-          teff@platzi.com
+          {parsedAccount?.email}
         </li>
         <li>
           <NavLink
@@ -64,15 +70,13 @@ const Navbar = () => {
             Sign out
           </NavLink>
         </li>
-        <li className='flex items-center'>
-          <ShoppingBagIcon className='h-6 w-6 text-black'></ShoppingBagIcon>
-          <div>{context.cartProducts.length}</div>
-        </li>
+        <ShoppingCart />
+        
         </>
       )
     }
   }
-
+  
   return (
     <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
