@@ -15,14 +15,23 @@ const CheckoutSideMenu = () => {
   }
 
   const handleCheckout = () => {
+    const date = new Date()
+    const currentDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
     const orderToAdd = {
-      date: '01.02.23',
+      date: currentDate,
       products: context.cartProducts,
       totalProducts: context.cartProducts.length,
       totalPrice: totalPrice(context.cartProducts)
     }
 
+    const ordersString = localStorage.getItem('orders');
+    const orders = ordersString ? JSON.parse(ordersString) : [];
+    orders.push(orderToAdd);
+    localStorage.setItem('orders', JSON.stringify(orders));
+
     context.setOrder([...context.order, orderToAdd])
+    context.closeProductDetail()
+    context.closeCheckoutSideMenu()
     context.setCartProducts([])
     context.setSearchByTitle(null)
   }

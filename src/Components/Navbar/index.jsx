@@ -8,7 +8,8 @@ const Navbar = () => {
   const activeStyle = 'underline underline-offset-4'
 
   const account = localStorage.getItem('account')
-  const parsedAccount = JSON.parse(account)
+  const parsedAccount = account ? JSON.parse(account) : null
+
 
   const hasAnAccount = !!parsedAccount && Object.keys(parsedAccount).length > 0
 

@@ -2,11 +2,15 @@ import { createContext, useState, useEffect } from 'react'
 
 export const initializeLocalStorage = () => {
   const accountInLocalStorage = localStorage.getItem('account')
-  console.log(accountInLocalStorage);
   const signOutInLocalStorage = localStorage.getItem('sign-out')
-  console.log(signOutInLocalStorage)
   let parsedAccount
   let parsedSignOut
+
+  const ordersExist = localStorage.getItem('orders');
+
+  if (!ordersExist) {
+    localStorage.setItem('orders', JSON.stringify({}));
+  }
 
   if (!accountInLocalStorage) {
     localStorage.setItem('account', JSON.stringify({}))

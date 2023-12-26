@@ -11,7 +11,7 @@ function SignOut() {
   const formRef = useRef(null)
 
   const account = localStorage.getItem('account')
-  const parsedAccount = JSON.parse(account)
+  const parsedAccount = account ? JSON.parse(account) : null
 
   const hasAnAccount = !!parsedAccount && Object.keys(parsedAccount).length > 0
 
@@ -29,8 +29,6 @@ function SignOut() {
       handleLogIn()
     } 
   }
-
-  console.log("cuenta del estado: ", account);
 
   const handleLogIn = () => {
     if (hasAnAccount) {
