@@ -3,6 +3,7 @@ import Layout from '../../Components/Layout'
 import Card from '../../Components/Card'
 import ProductDetail from '../../Components/ProductDetail'
 import { ShoppingCartContext } from '../../Context'
+import {ExclamationCircleIcon} from '@heroicons/react/24/outline'
 
 function Home() {
   const context = useContext(ShoppingCartContext)
@@ -16,7 +17,10 @@ function Home() {
       )
     } else {
       return (
-        <div>We don't have anything :(</div>
+        <span className='flex justify-center'>
+          <ExclamationCircleIcon className='text-red-500 w-6 h-6 mr-1'/>
+          <p className=' font-semibold'>Product not found </p>
+        </span>
       )
     }
   }
@@ -32,7 +36,7 @@ function Home() {
         className='rounded-lg border border-gray-300 w-80 p-4 mb-4 focus:outline-none'
         onChange={(event) => context.setSearchByTitle(event.target.value)} />
         
-      <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+      <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg '>
         {renderView()}
       </div>
       <ProductDetail />
