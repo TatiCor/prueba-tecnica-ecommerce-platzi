@@ -71,18 +71,19 @@ function MyAccount() {
               </div>
               <div className='flex mb-1'>
                 <p className='mb-1 text-md font-bold'>Password: </p>
+                <div className='w-[150px] flex items-center '>
+                  { showPassword ? (
+                    <p className='mx-2'>{parsedAccount?.password}</p>) : (
+                    <p className='mx-2'>{'*'.repeat(parsedAccount?.password?.length || 0)}</p>
+                  )}
+                </div>
                 { showPassword ? (
-                  <p className='mx-2'>{parsedAccount?.password}</p>) : (
-                  <p className='mx-2'>{'*'.repeat(parsedAccount?.password?.length || 0)}</p>
+                  <EyeIcon className='ml-2 h-6 w-6 cursor-pointer' onClick={togglePasswordVisibility} />
+                ) : (
+                  <EyeSlashIcon className='ml-2 h-6 w-6 cursor-pointer' onClick={togglePasswordVisibility} />
                 )}
-
-                { showPassword ? (
-                            <EyeIcon className='h-6 w-6 ml-1' onClick={togglePasswordVisibility} />
-                          ) : (
-                            <EyeSlashIcon className='h-6 w-6 ml-1' onClick={togglePasswordVisibility} />
-                          )}
-                                
               </div>
+
             </span>
             <button 
               className='bg-black text-white rounded-md font-bold  my-4 p-2 cursor-pointer hover:shadow-md'

@@ -14,7 +14,7 @@ const Navbar = () => {
   const hasAnAccount = !!parsedAccount && Object.keys(parsedAccount).length > 0
 
   const isUserSignOut = context.signOut
-  console.log("estado del contexto ",isUserSignOut)
+
   
   const handleSignOut = () => {
     const stringifiedSignOut = JSON.stringify(true)
@@ -79,7 +79,7 @@ const Navbar = () => {
   }
   
   return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
+    <nav className='flex justify-between items-center bg-white fixed z-10 top-0 w-full py-5 px-8 text-sm font-light shadow-sm'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
           <NavLink to='/'>
